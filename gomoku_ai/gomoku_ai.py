@@ -64,7 +64,8 @@ class GomokuAI:
         game = self._games[id]
 
         if human_move is not None:
-            move = game.board.location_to_move(human_move)
+            location = [14 - human_move[1], human_move[0]]
+            move = game.board.location_to_move(location)
             if move == -1 or move not in game.board.availables:
                 raise ValueError("Invalid move!")
 
@@ -81,4 +82,5 @@ class GomokuAI:
         if end:
             del self._games[id]
 
-        return game.board.move_to_location(move)
+        location = game.board.move_to_location(move)
+        return [location[1], 14 - location[0]]
