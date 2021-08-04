@@ -1,7 +1,9 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 import tensorflow as tf
 import tensorlayer as tl
 from tensorlayer.layers import *
-import os
 import numpy as np
 
 
@@ -81,7 +83,7 @@ class PolicyValueNet():
 
         if init_model is not None:
             self.restore_model(init_model)
-            print('model loaded')
+            # print('model loaded')
         elif transfer_model is not None:
             self.saver_restore.restore(self.session,transfer_model)
             print('transfer model loaded !')
